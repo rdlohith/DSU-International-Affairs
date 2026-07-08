@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ISEC - International Startup Entry Community - DSU - Dayananda Sagar University</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: flex;
+            padding-left: 100px;
+            padding-right: 50px;
+            padding-top: -150px;
+        }
+
+        .column {
+            flex: 1;
+            /* Equal width */
+            padding-top: 20px;
+            padding-bottom: 0px;
+            padding-right: 10px;
+            padding-left: 20px;
+            box-sizing: border-box;
+            /* Include padding in width */
+        }
+
+        .left {
+            background-color: #FFFFFF;
+        }
+
+        .right {
+            background-color: #FFFFFF;
+        }
+
+        /* Container for the entire slideshow */
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            /* Adjust this to the size you want */
+            margin: 0 auto;
+            overflow: hidden;
+            /* Ensures images that are out of view are hidden */
+        }
+
+        /* Slideshow container */
+        .image-slideshow {
+            display: flex;
+            transition: transform 1s ease;
+            /* Smooth transition for sliding images */
+        }
+
+        /* Individual images inside the slideshow */
+        .slide {
+            width: 100%;
+            /* Each image will take full width of the container */
+            height: auto;
+            /* Maintain aspect ratio */
+            flex-shrink: 0;
+            /* Prevent images from shrinking */
+        }
+
+        .intro {
+            color: #220002;
+            margin-top: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: 70px;
+            color: #4d5c6b;
+        }
+
+        .intro p {
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .intro b {
+            font-size: 25px;
+        }
+
+        /* Dropdown Headings */
+        .dropdown-section {
+            width: 80%;
+            margin: 30px auto;
+            background-color: #30659f;
+            border: 1px solid #abae9d;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 3px;
+        }
+
+        .dropdown-header {
+            background-color: #698f8f;
+            color: #280614;
+            padding: 15px 20px;
+            font-size: 1.3em;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+        }
+
+        .dropdown-header:hover {
+            background-color: teal;
+        }
+
+        .dropdown-content {
+            display: none;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            color: #3d2403;
+            border-top: 1px solid #003366;
+        }
+
+        .dropdown-content b {
+            color: #637485;
+        }
+
+        .dropdown-section:hover .dropdown-content {
+            display: block;
+        }
+
+        .cta-button {
+            font-family: arial;
+            background-color: #4e472f;
+            color: #dce3ec;
+            padding: 12px 24px 12px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 2px;
+            text-decoration: none;
+            font-size: 20px;
+            position: relative;
+            box-shadow: 2px 2px 4px #637485;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button a {
+            cursor: pointer;
+            pointer-events: auto;
+            z-index: 1;
+            /* Ensure it's above other elements */
+            text-decoration: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <meta
+        content=" DSU International Affairs. Our mission is to support international scholars in their academic pursuits and professional growth, facilitating a seamless transition to new educational environments. We provide comprehensive resources and personalized guidance, from orientation sessions to networking opportunities, empowering scholars to thrive in their new settings. We believe in fostering an inclusive community that celebrates diverse backgrounds and perspectives, helping each scholar cultivate their unique identity as a global academic. Our dedicated support includes mentorship programs, workshops on research and publication, accommodations for individuals with disabilities, and language assistance for non-native speakers. By building strong partnerships with academic institutions and local organizations, we enhance our initiatives and ensure that every scholar has the tools, resources, and connections needed to excel in their research and contribute meaningfully to their fields. DSU International Affairs"
+        name="description" />
+    <meta content="Dayananda Sagar University: International Affairs" name="author" />
+
+    <meta content="Study Abroad - DSU - Dayananda Sagar University" property="og:title" />
+    <meta
+        content=" DSU International Affairs. Our mission is to support international scholars in their academic pursuits and professional growth, facilitating a seamless transition to new educational environments. We provide comprehensive resources and personalized guidance, from orientation sessions to networking opportunities, empowering scholars to thrive in their new settings. We believe in fostering an inclusive community that celebrates diverse backgrounds and perspectives, helping each scholar cultivate their unique identity as a global academic. Our dedicated support includes mentorship programs, workshops on research and publication, accommodations for individuals with disabilities, and language assistance for non-native speakers. By building strong partnerships with academic institutions and local organizations, we enhance our initiatives and ensure that every scholar has the tools, resources, and connections needed to excel in their research and contribute meaningfully to their fields. DSU International Affairs"
+        property="og:description" />
+
+    <meta content="website" property="og:type" />
+    <meta content="InternationalScholars.html" property="og:url" />
+    <meta data-siteId="DSU" id="siteId" />
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,700,700italic" rel="stylesheet"
+        type="text/css" />
+    <link href="common/standard-v6/css/main.6.7.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="common/standard-v6/css/print.min.css" media="print" rel="stylesheet" type="text/css" />
+
+    <link href="favicon.ico" rel="icon" />
+    <link href="favicon-152.png" rel="apple-touch-icon-precomposed" />
+    <meta content="#9f0000" name="msapplication-TileColor" />
+    <meta content="favicon-144.png" name="msapplication-TileImage" />
+
+    <script>var dataLayer = window.dataLayer = window.dataLayer || [];</script>
+    <script>
+        var siteId = document.getElementById('siteId').getAttribute('data-siteId');
+        var siteName = siteId.replace(/\-\d{1,2}$/, '');
+        dataLayer.push({
+            'siteId': siteId,
+            'siteName': siteName,
+            'cms': 'cascade'
+        });
+    </script>
+    <script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&amp;l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', '');</script>
+
+    <link href="https:news/feeds/news" rel="alternate" title="DSU News" type="application/rss+xml" />
+
+    <!-- Homepage Refresh -->
+    <style media="screen" type="text/css">
+        /* <![CDATA[ */
+        .grid.column4.grey.nav {
+            background-color: #eee;
+            position: relative
+        }
+
+        .grid.column4.grey.nav a {
+            line-height: 2.5rem
+        }
+
+        .grid.column4.grey.nav>p {
+            flex: 0 0 100%;
+            padding-bottom: 4vw;
+            z-index: 2;
+            padding-right: inherit;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #707070;
+            line-height: 1.35em
+        }
+
+        .grid.column4.grey.nav img {
+            display: none
+        }
+
+        /* ]]> */
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5RW3FVDZF7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5RW3FVDZF7');
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentIndex = 0; // Start with the first image
+
+            // Function to move the slideshow to the next image
+            function showNextSlide() {
+                // Move the slideshow by one image
+                currentIndex = (currentIndex + 1) % totalSlides;
+
+                // Update the transform property to shift the images
+                const newTransformValue = -currentIndex * 100; // Move left by 100% per image
+                document.querySelector('.image-slideshow').style.transform = `translateX(${newTransformValue}%)`;
+            }
+
+            // Change the image every 2 seconds
+            setInterval(showNextSlide, 2000);
+
+            // Initialize the first slide (to ensure it's visible at first)
+            showNextSlide();
+        });
+    </script>
+
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="EHffXp0LApw/17YqguRLbw" async></script>
+</head>
+
+<body class="no-js">
+    <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id="
+            style="display:none;visibility:hidden" width="0"></iframe></noscript>
+
+
+    <div id="container">
+
+        <header class="float">
+            <div class="roof ">
+                <div>
+                    <a class="wordmark" href="index.html">Dayananda Sagar University</a>
+                    <button aria-label="toggle menu" aria-pressed="false" class="menu-btn"
+                        href="#nav"><b>—</b><b>—</b><b>—</b></button>
+                    <form action="https://search.DSU.edu" class="search search-form" method="get" name="customForm">
+                        <input id="id_form_id" name="form_id" type="hidden" value="basic-form" />
+                        <input id="site" name="site" type="hidden" value="" />
+                        <input id="id_ie" name="ie" type="hidden" value="UTF-8" />
+                        <label><span>Search</span>
+                            <input aria-label="Search" id="id_q" name="q" placeholder="Search" />
+                        </label> <button title="Submit" type="submit">Search</button>
+                        <input name="site" type="hidden" value="" />
+                    </form>
+                </div>
+            </div>
+
+        </header>
+
+        <div id="content" tabindex="0">
+
+            <div aria-label="Study Abroad" class="hero tubular  " data-img="Images/StudyAbraodBG.jpg"
+                data-vid="_d0Jg4H402U" role="img" style="background-image:url(common/standard-v6/images/DJI_0814.jpg)">
+                <div class="text">
+                    <h1>Study Abroad</h1>
+                </div>
+            </div>
+            <script type="text/javascript">
+                function addLoadEvent(func) {
+                    var oldonload = window.onload;
+                    if (typeof window.onload != 'function') {
+                        window.onload = func;
+                    } else {
+                        window.onload = function () {
+                            if (oldonload) {
+                                oldonload();
+                            }
+                            func();
+                        }
+                    }
+                }
+            </script>
+
+            <!-- ######################################################################################################################################################################################## -->
+
+            <div class="intro">
+                <h1>ISEC - International Startup Entry Community</h1>
+                <p><b>Ready to Begin Your Entrepreneurial Journey?</b>
+                    <br>Join ISEC today and be a part of DSU's global startup revolution!
+                </p>
+                <div>
+                    <a href="https://forms.gle/QbrkSBk2h6tx4YyM9" target="_blank" class="button-link">Register Your
+                        Startup Now!</a>
+                </div>
+            </div>
+
+            <!-- Dropdown Section 1 -->
+            <div class="dropdown-section">
+                <div class="dropdown-header">Welcome to the Future of Entrepreneurship!</div>
+                <div class="dropdown-content">
+                    <p>The International Startup Entry Community (ISEC) at Dayananda Sagar University (DSU) is an
+                        exciting new initiative designed to empower student
+                        entrepreneurs and fuel innovation on a global scale. This proposal outlines the vision and
+                        strategy behind the creation of a platform that
+                        connects DSU students with international mentors, investors, and entrepreneurial opportunities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dropdown Section 2 -->
+            <div class="dropdown-section">
+                <div class="dropdown-header">Our Vision & Objectives</div>
+                <div class="dropdown-content">
+                    <p>To transform DSU into a globally recognized hub for scalable innovation, where students can
+                        connect, create, and lead successful international ventures.</p>
+                    <ul>
+                        <li><b>Foster a Global Entrepreneurial Mindset: </b><br>Encouraging students to think big and
+                            innovate beyond local boundaries.</li>
+                        <li><b>Connect Students with Mentors & Investors: </b><br>Providing access to global experts and
+                            capital to turn ideas into reality.</li>
+                        <li><b>Entrepreneurs with the Tools for Success: </b><br>Offering the resources, guidance, and
+                            funding needed to build sustainable startups.</li>
+                        <li><b>Expand to Global Markets: </b><br>Helping DSU startups make an impact across
+                            international borders.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Dropdown Section 3 -->
+            <div class="dropdown-section">
+                <div class="dropdown-header">Why DSU?</div>
+                <div class="dropdown-content">
+                    <p>Dayananda Sagar University is known for its innovation-driven culture, with cutting-edge
+                        resources and a passionate student body. With access to advanced
+                        incubation centers, academic excellence, and a leadership committed to fostering
+                        entrepreneurship, DSU is the ideal launchpad for ISEC.
+                        <br>Our vibrant community is already brimming with potential, and now it's time to bring those
+                        ideas into the global spotlight!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dropdown Section 4 -->
+            <div class="dropdown-section">
+                <div class="dropdown-header">The Need for ISEC</div>
+                <div class="dropdown-content">
+                    <p>Every year, countless student startups face the struggle of funding, scaling, and gaining
+                        visibility. Many brilliant ideas never reach their potential because
+                        of lack of access to mentors, investors, and global exposure. This is where ISEC steps
+                        in—offering students the necessary guidance, connections, and financial backing to take their
+                        ventures to new heights.</p>
+                </div>
+            </div>
+
+            <!-- Dropdown Section 5 -->
+            <div class="dropdown-section">
+                <div class="dropdown-header">Inspiration from Global Successes</div>
+                <div class="dropdown-content">
+                    <p>Global initiatives like the Ivy Growth Association have proven that the right mentorship and
+                        investor support can help regional ecosystems flourish. Inspired by such success stories, ISEC
+                        will focus on
+                        empowering students from all backgrounds, including those from metropolitan and Tier-2/Tier-3
+                        cities, to build global startups.</p>
+                </div>
+            </div>
+
+            <!-- Dropdown Section 6 -->
+            <div class="dropdown-section">
+                <div class="dropdown-header">What Sets Us Apart?</div>
+                <div class="dropdown-content">
+                    <ol>
+                        <li><b>Global Exposure </b><br>Connecting DSU startups to international markets, allowing them
+                            to scale beyond India.</li>
+                        <li><b>World-Class Mentorship</b><br>Building a strong network of mentors—including DSU alumni
+                            and global industry experts—who will provide guidance and strategic advice.</li>
+                        <li><b>Investment Readiness</b><br>Helping students understand valuation, pitching, and
+                            fundraising to prepare them for successful investment rounds.</li>
+                        <li><b>Decentralized Discovery</b><br>Establishing startup cells within departments, fostering
+                            innovation at the classroom level.</li>
+                        <li><b>Structured Support</b><br>Offering access to workspace, legal/financial guidance, and
+                            micro-funding for student startups to accelerate their growth.</li>
+                        <li><b>Community Culture</b><br>Creating a collaborative environment where ideas thrive,
+                            students learn from each other, and innovation becomes a way of life.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="intro">
+                <a href="https://forms.gle/QbrkSBk2h6tx4YyM9" target="_blank" class="button-link">Register Your Startup
+                    Now!</a>
+                <p>Page designed and developed by Nirupa Gurram, BCA - 2023 Batch!</p>
+            </div>
+
+
+            <!-- ######################################################################################################################################################################################## -->
+
+            <div class="grid column4 grey nav" id="footer-grid">
+                <p style="margin-bottom: -20px; margin-top: -30px;" align="justify">Dayananda Sagar Institutions was
+                    founded in the 1960s, and Dayananda Sagar University (DSU) was established in 2014. DSU is renowned
+                    for its world-class interdisciplinary programs, including Medicine, Engineering, Business, Design,
+                    Computing, Law, and Science. It has also been accredited with a NAAC A+ rating. </p>
+                <p></p>
+                <div>
+                    <p>
+                        <a class="cta" href="Calendar.html" rel="noopener" target="_self">Calendar</a>
+                        <br />
+                        <a class="cta" href="GlobalPartnerships.html" rel="noopener" target="_self">Collaborations</a>
+                        <br />
+                        <a class="cta" href="newsletter.html" rel="noopener" target="_self">News Release</a>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <a class="cta" href="Testimonials.html" rel="noopener" target="_self">Alumni</a>
+                        <br />
+                        <a class="cta" href="Resources.html" rel="noopener" target="_self">International &amp;
+                            Resources</a>
+                        <br />
+                        <a class="cta" href="team.html">Team</a>
+                    </p>
+                </div>
+                <div>
+                    <a href="https://www.instagram.com/dayanandasagaruniversityblr/" target="_self">
+                        <img alt="DSU on Instagram" src="Images/insta2.jpeg" />
+                    </a>
+                </div>
+            </div>
+
+            <footer class="grid column3 invert">
+
+                <div>
+                    <p>
+                        Dayananda Sagar University
+                        <br />
+                        Devarakaggalahalli, Harohalli Kanakapura Road
+                        <br />
+                        Ramanagara, Karnataka 562112
+                        <br />
+                        international-relations@dsu.edu.in
+                        <br />
+                        +91 9606022150
+                        <br />
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="www.dsu.edu.in/">www.dsu.edu.in</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            ©
+                            <span id="js-current-year">2024</span>
+                            Dayananda Sagar University
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                </div>
+                <div>
+
+                    <ul class="social third">
+                        <li>
+                            <a class="facebook" href="https://www.facebook.com/share/LBm1X8d3NfNigxSs/?mibextid=LQQJ4d"
+                                target="_self">DSU on
+                                Facebook</a>
+                        </li>
+                        <li>
+                            <a class="twitter" href="http://www.twitter.com/carnegiemellon" target="_self">DSU on
+                                Twitter</a>
+                        </li>
+                        <li>
+                            <a class="linkedin"
+                                href="https://www.linkedin.com/company/dayananda-sagar-university-international-affairs-and-Leaderships/"
+                                target="_self">DSU on LinkedIn</a>
+                        </li>
+                        <li>
+                            <a class="youtube"
+                                href="https://youtube.com/@dayanandasagaruniversityint?si=-H7lQ85mlseZgqaH"
+                                target="_self">DSU YouTube Channel</a>
+                        </li>
+                        <li>
+                            <a class="instagram" href="https://instagram.com/dsu_int_affairs/" target="_self">DSU on
+                                Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <nav id="nav">
+                        <ul>
+                            <li class="">
+                                <a href="https://dsu.edu.in/international/?utm_source=Lohith&utm_medium=Reels&utm_campaign=Reels"
+                                    target="_self" target="_self"> Admissions </a>
+                            </li>
+
+                            <li class="">
+                                <a href="UndergraduateAndMasters.html" target="_self"> NRI/Foreign Nationals </a>
+                            </li>
+
+                            <li class="">
+                                <a href="StudyAbroad.html" target="_self"> Global Collaborations </a>
+                                <ul>
+                                    <li>
+                                        <a href="GlobalPartnerships.html" target="_self"> MoU's
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="StudentExchange.html" target="_self"> Student Exchange
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="StudentExchange.html" target="_self"> Outgoing
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="SemesterExchange.html" target="_self"> Incoming
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="MastersAbroad.html" target="_self"> Master's Desk
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="InternationalImmersion.html" target="_self"> International Immersion
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="ScholarsInResidence.html" target="_self"> International Scholars
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="InternationalInitative.html" target="_self"> International Initiatives
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="InternationalRoboticsInitative.html" target="_self">International
+                                            Robotics Initative
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="BootcampForInnovators.html" target="_self"> Bootcamp For Innovators
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="tedx.html" target="_self"> TEDx DSU
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="ImmersionX.html" target="_self"> Immersion
+                                </a>
+                                <ul>
+                                    <li class="">
+                                        <a href="ImmersionX.html" target="_self"> Immersion X
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="Hackforge.html" target="_self"> Hack Forge
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="RootsAndRealms.html" target="_self"> Roots And Realms
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="events.html" target="_self"> Events
+                                </a>
+                                <ul>
+                                    <li class="">
+                                        <a href="GlobeFest.html" target="_self"> Globe Fest
+                                        </a>
+                                    </li>
+                                    <li class="">
+                                        <a href="OpenHouse.html" target="_self"> Open House
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="EventGallery.html" target="_self"> Event Gallery
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="newsletter.html" target="_self"> News Release
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="MonthlyNote.html" target="_self"> Monthly Note
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="InternationalConferences.html" target="_self"> International
+                                            Conferences
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="Blogs.html" target="_self"> Blogs
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+                            <li class="secondary">
+                                <a href="GlobeFest.html" target="_self"> Globe Fest
+                                </a>
+                            </li>
+                            <li class="secondary">
+                                <a href="Achievements.html" target="_self"> Achievements
+                                </a>
+                            </li>
+
+                            <li class="secondary">
+                                <a href="Testimonials.html" target="_self"> Testimonials &amp; Global Alumni Network
+                                </a>
+                            </li>
+
+                            <li class="secondary">
+                                <a href="Social Media.html" target="_self"> Social Media
+                                </a>
+                            </li>
+
+                            <li class="secondary">
+                                <a href="Maps.html" target="_self"> Maps &amp; Getting Here
+                                </a>
+                            </li>
+
+                            <li class="secondary">
+                                <a href="Leadership.html" target="_self"> Leadership
+                                </a>
+                            </li>
+
+                            <li class="secondary">
+                                <a href="team.html" target="_self"> Team
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </footer>
+        </div>
+    </div>
+
+    <script src="common/standard-v6/js/list.min.js" type="text/javascript"></script>
+    <script src="common/standard-v6/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="common/standard-v6/js/main.6.7.min.js" type="text/javascript"></script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="common/standard-v6/js/tubular-reload.min.js"></script>
+
+    <!-- Homepage Refresh -->
+    <script>
+        // rearrange footer elements
+        var footer = document.querySelector('.grid.column4.grey.nav');
+        var tagline = document.querySelectorAll('.grid.column4.grey.nav p')[0];
+        var firstFooterDiv = document.querySelectorAll('.grid.column4.grey.nav div')[0];
+        footer.insertBefore(tagline, firstFooterDiv);
+    </script>
+
+    <script src="assets/js/rellax.min.js"></script>
+    <script>
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            'function' != typeof window.onload ? window.onload = func : window.onload = function () {
+                oldonload && oldonload(),
+                    func()
+            }
+        }
+        $(document).ready((function () {
+            $('.roof form').clone().prependTo('#hero-nav'),
+                $('.roof [type=\'submit\']').on('click', (function (event) {
+                    var inputSelector = $('.roof [name="q"]'),
+                        input;
+                    '' !== $(inputSelector).val() ? $(this).submit() : (event.preventDefault(), $(inputSelector).toggleClass('dsu-search-box--on'), $('.roof .dsu-search-box--on').length && $(inputSelector).focus())
+                })),
+                $('.roof [placeholder="Search"]').on('focus', (function (event) {
+                    var inputSelector = $('.roof [name="q"]');
+                    $(inputSelector).addClass('dsu-search-box--on')
+                })),
+                $('#hero-nav [type=\'submit\']').on('click', (function (event) {
+                    var form = $('#hero-nav .search'),
+                        inputSelector = $('#hero-nav [name="q"]'),
+                        input;
+                    '' !== $(inputSelector).val() ? $(this).submit() : (event.preventDefault(), $(form).toggleClass('dsu-search-box--on'), $('#hero-nav .dsu-search-box--on').length && $(inputSelector).focus())
+                })),
+                $('#hero-nav [placeholder="Search"]').on('focus', (function (event) {
+                    var form = $('#hero-nav .search');
+                    $(form).addClass('dsu-search-box--on')
+                })),
+                $('#fact1 img').replaceWith($('.icon1')),
+                $('#fact2 img').replaceWith($('.icon2')),
+                $('#fact3 img').replaceWith($('.icon3')),
+                $('#feature1__archive-link, #feature1__photo').attr('data-rellax-speed', '1').addClass('rellax'),
+                $('#feature1__text').attr('data-rellax-speed', '-2').addClass('rellax'),
+                $('#feature2__text').attr('data-rellax-speed', '-1').addClass('rellax'),
+                $('#fact1, #fact2').addClass('invisible');
+            var rellax = new Rellax,
+                rellaxSVG1 = new Rellax('#fact1', {
+                    callback: function (positions) {
+                        positions.y >= '-160' && $('#fact1').removeClass('invisible')
+                    }
+                }),
+                rellaxSVG2 = new Rellax('#fact2', {
+                    callback: function (positions) {
+                        positions.y >= '-160' && $('#fact2').removeClass('invisible')
+                    }
+                })
+        })),
+            addLoadEvent((function () {
+                function imageInstagramFooter(url, link) {
+                    return '<a id=\'instagram\' rel=\'noopener\' target=\'_self\' href=\'' + link + '\'><img src=' + url + ' width=\'854\' class=\'instagram-footer\' alt=\'dsu on Instagram\'></a>'
+                }
+                $('body.mobile').length || $('header a, header button, header input').focus((function () {
+                    $('#content').css({
+                        'margin-top': '0rem',
+                        transition: 'margin-top .2s ease'
+                    }),
+                        $('header.float + #content .tall').css({
+                            height: 'calc(100vh - 6rem)',
+                            transition: 'height .2s ease'
+                        }),
+                        $('#hero-nav').attr('style', 'display:none;'),
+                        $('#campusAlert').css({
+                            'z-index': '1',
+                            'background-color': 'white'
+                        }),
+                        $('#campusAlert+#container .hero .text').css({
+                            position: 'fixed'
+                        })
+                })).blur((function () {
+                    $('#content').css({
+                        'margin-top': '0'
+                    }),
+                        $('header.float + #content .tall').css({
+                            height: '100vh'
+                        }),
+                        $('#hero-nav').removeAttr('style'),
+                        $('#campusAlert').removeAttr('style'),
+                        $('#campusAlert+#container .hero .text').removeAttr('style')
+                })),
+                    jQuery.ajax({
+                        url: 'https://api.curator.io/v1/feeds/233a3e83-6839-4796-94a3-0b997984eeeb/posts',
+                        type: 'get',
+                        success: function (data) {
+                            let posts = data.posts;
+                            if (posts && posts.length > 0) {
+                                if (posts[0].image_large !== "") {
+                                    $('#instagram').replaceWith(imageInstagramFooter(posts[0].image_large, posts[0].url))
+                                } else {
+                                    $('#instagram').replaceWith(imageInstagramFooter(posts[0].image, posts[0].url))
+                                }
+                            }
+                        }
+                    })
+            }));
+        const ready = () => {
+            if ($('#content .hero > .text').length === 0) {
+                $('#content .hero').append('<div class="text"><h1>Dayananda Sagar University</h1></div>');
+            }
+        };
+        window.addEventListener('DOMContentLoaded', ready, false);
+        /* ]]> */
+    </script>
+
+</body>
+
+</html>
